@@ -59,6 +59,5 @@ Where Name Like 'SPO[^K]%'
 Order By Name
 
 --Question 12
-Select Distinct ProductSubcategoryID, Color
+Select Distinct IsNull(ProductSubcategoryID, 0) As ProductSubcategoryID, IsNull(Color, 'N/A') As Color
 From Production.Product
-Where ProductSubcategoryID Is Not Null and Color Is Not Null
