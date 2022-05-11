@@ -1,1 +1,1 @@
-# Antra-SEP HW1 Anwsers
+# Antra-SEP HW1 Answers
