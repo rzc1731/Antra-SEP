@@ -90,3 +90,36 @@ Select s.City, s.CompanyName, s.ContactName, 'Supplier'
 From Suppliers s
 
 --Question 14
+Select Distinct e.City
+From Employees e
+Where e.City In (Select Distinct c.City From Customers c)
+
+--Question 15a
+Select Distinct c.City
+From Customers c
+Where c.City Not In (Select Distinct e.City From Employees e)
+
+--Question 15b
+Select Distinct c.City
+From Customers c
+Except
+Select Distinct e.City
+From Employees e
+
+--Question 16
+Select p.ProductName, SUM(od.Quantity) As [Total Order Quantities]
+From Products p join [Order Details] od on p.ProductID = od.ProductID
+Group By p.ProductName
+
+--Question 17a
+
+
+--Question 17b
+Select City
+From (Select c.City, COUNT(c.City) As [Customer Count]
+From Customers c
+Group By c.City
+Having COUNT(c.City) >= 2) cc
+
+--Question 18
+
