@@ -112,7 +112,18 @@ From Products p join [Order Details] od on p.ProductID = od.ProductID
 Group By p.ProductName
 
 --Question 17a
-
+Select c.City
+From Customers c
+Except
+(Select c.City
+From Customers c
+Group By c.City
+Having COUNT(c.CustomerID) = 0
+Union
+Select c.City
+From Customers c
+Group By c.City
+Having COUNT(c.CustomerID) = 1)
 
 --Question 17b
 Select City
@@ -121,5 +132,44 @@ From Customers c
 Group By c.City
 Having COUNT(c.City) >= 2) cc
 
---Question 18
+Select c.City
+From Customers c
+Group By c.City
+Having COUNT(c.City) >= 2
 
+--Question 18
+With CityProductPair
+As (
+Select Distinct c.City As [CityName], od.ProductID As [PID]
+From Customers c join Orders o on c.CustomerID = o.CustomerID join [Order Details] od on o.OrderID = od.OrderID)
+Select cpp.CityName
+From CityProductPair cpp
+Group By cpp.CityName
+Having COUNT(cpp.PID) >= 2
+
+--Question 19
+Select Top 5 p.ProductId, Avg(p.UnitPrice) [AvgUnitPrice], Sum(Quantity) [SoldTotal]
+From Products p Join [Order Details] od On p.ProductID = od.ProductID
+Group By p.ProductID
+Order By [SoldTotal] Desc
+
+--Question 20
+Select MostSoldCity.ShipCity As [Win Win City]
+From
+(Select Top 1 o.ShipCity
+From Orders o
+Group By o.ShipCity
+Order By COUNT(o.OrderID) DESC) MostOrderCity
+join
+(Select Top 1 o.ShipCity
+From Orders o join [Order Details] od on o.OrderID = od.OrderID
+Group By o.ShipCity
+Order By SUM(od.Quantity) DESC) MostSoldCity on MostOrderCity.ShipCity = MostSoldCity.ShipCity
+
+--Question 21
+--WITH CTE AS(
+--   SELECT [col1], [col2], [col3], ... ,
+--       RN = ROW_NUMBER()OVER(PARTITION BY col1 ORDER BY col1)
+--   FROM Table
+--)
+--DELETE FROM CTE WHERE RN > 1
