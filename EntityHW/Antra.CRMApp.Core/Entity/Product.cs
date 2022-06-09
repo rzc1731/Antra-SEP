@@ -12,7 +12,7 @@ namespace Antra.CRMApp.Core.Entity
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
-        [Column(TypeName = "nvarchar(40)")]
+        [Column(TypeName = "varchar(40)")]
         public string Name { get; set; }
 
         [Column(TypeName = "int")]
@@ -21,7 +21,7 @@ namespace Antra.CRMApp.Core.Entity
         [Column(TypeName = "int")]
         public int CategoryId { get; set; }
 
-        [Column(TypeName = "nvarchar(20)")]
+        [Column(TypeName = "varchar(20)")]
         public string QuantityPerUnit { get; set; }
 
         [Column(TypeName = "money")]

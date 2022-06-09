@@ -13,31 +13,31 @@ namespace Antra.CRMApp.Core.Entity
         public int Id { get; set; }
 
         [Required(ErrorMessage = "CompanyName is required")]
-        [Column(TypeName = "nvarchar(40)")]
+        [Column(TypeName = "varchar(40)")]
         public string CompanyName { get; set; }
 
-        [Column(TypeName = "nvarchar(30)")]
+        [Column(TypeName = "varchar(30)")]
         public string ContactName { get; set; }
 
-        [Column(TypeName = "nvarchar(30)")]
+        [Column(TypeName = "varchar(30)")]
         public string ContactTitle { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(60)")]
         public string Address { get; set; }
 
-        [Column(TypeName = "nvarchar(15)")]
+        [Column(TypeName = "varchar(15)")]
         public string City { get; set; }
 
-        [Column(TypeName = "nvarchar(15)")]
+        [Column(TypeName = "varchar(15)")]
         public string RegionId { get; set; }
 
-        [Column(TypeName = "nvarchar(10)")]
+        [Column(TypeName = "varchar(10)")]
         public string PostalCode { get; set; }
 
-        [Column(TypeName = "nvarchar(15)")]
+        [Column(TypeName = "varchar(15)")]
         public string Country { get; set; }
 
-        [Column(TypeName = "nvarchar(24)")]
+        [Column(TypeName = "varchar(24)")]
         public string Phone { get; set; }
     }
 }

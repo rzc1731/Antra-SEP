@@ -16,7 +16,7 @@ namespace Antra.CRMApp.Core.Entity
         [Column(TypeName = "varchar(40)")]
         public string Name { get; set; }
 
-        [Column(TypeName = "nvarchar(24)")]
+        [Column(TypeName = "varchar(24)")]
         public string Phone { get; set; }
     }
 }

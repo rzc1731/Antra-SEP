@@ -13,7 +13,7 @@ namespace Antra.CRMApp.Core.Entity
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
-        [Column(TypeName = "nvarchar(15)")]
+        [Column(TypeName = "varchar(15)")]
         public string Name { get; set; }
 
         [Column(TypeName = "varchar(200)")]

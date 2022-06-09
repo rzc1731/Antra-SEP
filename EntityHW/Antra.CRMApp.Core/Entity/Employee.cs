@@ -13,17 +13,17 @@ namespace Antra.CRMApp.Core.Entity
         public int Id { get; set; }
 
         [Required(ErrorMessage = "FirstName is required")]
-        [Column(TypeName = "nvarchar(20)")]
+        [Column(TypeName = "varchar(20)")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "LastName is required")]
-        [Column(TypeName = "nvarchar(20)")]
+        [Column(TypeName = "varchar(20)")]
         public string LastName { get; set; }
 
-        [Column(TypeName = "nvarchar(30)")]
+        [Column(TypeName = "varchar(30)")]
         public string Title { get; set; }
 
-        [Column(TypeName = "nvarchar(25)")]
+        [Column(TypeName = "varchar(25)")]
         public string TitleOfCourtesy { get; set; }
 
         [Column(TypeName = "datetime")]
@@ -32,28 +32,28 @@ namespace Antra.CRMApp.Core.Entity
         [Column(TypeName = "datetime")]
         public DateTime HireDate { get; set; }
 
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "varchar(60)")]
         public string Address { get; set; }
 
-        [Column(TypeName = "nvarchar(15)")]
+        [Column(TypeName = "varchar(15)")]
         public string City { get; set; }
 
-        [Column(TypeName = "nvarchar(15)")]
+        [Column(TypeName = "varchar(15)")]
         public string RegionId { get; set; }
 
-        [Column(TypeName = "nvarchar(10)")]
+        [Column(TypeName = "varchar(10)")]
         public string PostalCode { get; set; }
 
-        [Column(TypeName = "nvarchar(15)")]
+        [Column(TypeName = "varchar(15)")]
         public string Country { get; set; }
 
-        [Column(TypeName = "nvarchar(24)")]
+        [Column(TypeName = "varchar(24)")]
         public string Phone { get; set; }
 
         [Column(TypeName = "int")]
         public int ReportsTo { get; set; }
 
-        [Column(TypeName = "nvarchar(255)")]
+        [Column(TypeName = "varchar(255)")]
         public string PhotoPath { get; set; }
     }
 }
