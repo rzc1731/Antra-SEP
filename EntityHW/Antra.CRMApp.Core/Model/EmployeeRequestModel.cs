@@ -51,7 +51,7 @@ namespace Antra.CRMApp.Core.Model
         public string Phone { get; set; }
 
         [Column(TypeName = "int")]
-        public int ReportsTo { get; set; }
+        public int? ReportsTo { get; set; }
 
         [Column(TypeName = "varchar(MAX)")]
         public string PhotoPath { get; set; }
