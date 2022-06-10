@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
-namespace Antra.CRMApp.Core.Entity
+namespace Antra.CRMApp.Core.Model
 {
-    public class Category
+    public class CategoryModel
     {
         public int Id { get; set; }
 

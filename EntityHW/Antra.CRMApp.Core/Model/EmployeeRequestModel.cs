@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Antra.CRMApp.Core.Entity
+namespace Antra.CRMApp.Core.Model
 {
-    public class Employee
+    public class EmployeeRequestModel
     {
         public int Id { get; set; }
 
@@ -51,7 +51,7 @@ namespace Antra.CRMApp.Core.Entity
         public string Phone { get; set; }
 
         [Column(TypeName = "int")]
-        public int? ReportsTo { get; set; }
+        public int ReportsTo { get; set; }
 
         [Column(TypeName = "varchar(MAX)")]
         public string PhotoPath { get; set; }

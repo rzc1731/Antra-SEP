@@ -6,31 +6,18 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Antra.CRMApp.Core.Entity
+namespace Antra.CRMApp.Core.Model
 {
-    public class Employee
+    public class CustomerModel
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "FirstName is required")]
-        [Column(TypeName = "varchar(20)")]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "LastName is required")]
-        [Column(TypeName = "varchar(20)")]
-        public string LastName { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        [Column(TypeName = "varchar(40)")]
+        public string Name { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         public string Title { get; set; }
-
-        [Column(TypeName = "varchar(25)")]
-        public string TitleOfCourtesy { get; set; }
-
-        [Column(TypeName = "datetime")]
-        public DateTime BirthDate { get; set; }
-
-        [Column(TypeName = "datetime")]
-        public DateTime HireDate { get; set; }
 
         [Column(TypeName = "varchar(60)")]
         public string Address { get; set; }
@@ -49,11 +36,5 @@ namespace Antra.CRMApp.Core.Entity
 
         [Column(TypeName = "varchar(24)")]
         public string Phone { get; set; }
-
-        [Column(TypeName = "int")]
-        public int? ReportsTo { get; set; }
-
-        [Column(TypeName = "varchar(MAX)")]
-        public string PhotoPath { get; set; }
     }
 }

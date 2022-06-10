@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace Antra.CRMApp.Core.Entity
+
+namespace Antra.CRMApp.Core.Model
 {
-    public class Product
+    public class ProductModel
     {
         public int Id { get; set; }
 

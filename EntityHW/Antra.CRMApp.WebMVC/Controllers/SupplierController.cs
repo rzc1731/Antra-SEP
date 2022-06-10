@@ -1,25 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Antra.CRMApp.WebMVC.Models;
-using Antra.CRMApp.Core.Contract.Service;
+﻿using Antra.CRMApp.Core.Contract.Service;
 using Antra.CRMApp.Core.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Antra.CRMApp.WebMVC.Controllers
 {
-    public class ProductController : Controller
+    public class SupplierController : Controller
     {
-        private readonly IProductServiceAsync productServiceAsync;
-        public ProductController(IProductServiceAsync prodservice)
+        private readonly ISupplierServiceAsync supplierServiceAsync;
+        public SupplierController(ISupplierServiceAsync supservice)
         {
-            productServiceAsync = prodservice;
+            supplierServiceAsync = supservice;
         }
         public async Task<IActionResult> Index()
         {
-            var Collection = await productServiceAsync.GetAllAsync();
+            var Collection = await supplierServiceAsync.GetAllAsync();
             if (Collection != null)
             {
                 return View(Collection);
             }
-            List<ProductModel> model = new List<ProductModel>();
+            List<SupplierModel> model = new List<SupplierModel>();
             return View(model);
         }
 
@@ -30,11 +29,11 @@ namespace Antra.CRMApp.WebMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ProductModel model)
+        public async Task<IActionResult> Create(SupplierModel model)
         {
             if (ModelState.IsValid)
             {
-                await productServiceAsync.AddProductAsync(model);
+                await supplierServiceAsync.AddSupplierAsync(model);
                 return RedirectToAction("Index");
             }
             return View(model);

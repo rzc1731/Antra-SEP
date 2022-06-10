@@ -1,0 +1,82 @@
+﻿@model SupplierModel
+<form asp-controller="Supplier" asp-action="Create" method="post">
+    <h1 class="display-6">Add New Supplier</h1>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="CompanyName"></label>
+                    <input asp-for="CompanyName" class="form-control"/>
+                    <span asp-validation-for="CompanyName"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="ContactName"></label>
+                    <input asp-for="ContactName" class="form-control"/>
+                    <span asp-validation-for="ContactName"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="ContactTitle"></label>
+                    <input asp-for="ContactTitle" class="form-control"/>
+                    <span asp-validation-for="ContactTitle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Address"></label>
+                    <input asp-for="Address" class="form-control"/>
+                    <span asp-validation-for="Address"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="City"></label>
+                    <input asp-for="City" class="form-control"/>
+                    <span asp-validation-for="City"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="RegionId"></label>
+                    <input asp-for="RegionId" class="form-control"/>
+                    <span asp-validation-for="RegionId"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="PostalCode"></label>
+                    <input asp-for="PostalCode" class="form-control"/>
+                    <span asp-validation-for="PostalCode"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Country"></label>
+                    <input asp-for="Country" class="form-control"/>
+                    <span asp-validation-for="Country"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" class="form-control"/>
+                    <span asp-validation-for="Phone"></span>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Add Supplier" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
