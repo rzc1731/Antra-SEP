@@ -1,0 +1,45 @@
+﻿@model CustomerModel
+
+   @if (ViewBag.IsEdit==true)
+{
+    
+    
+        <div class="container">
+            <di class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Customer Updated Successfully. Go to <a asp-action="Index" asp-controller="Customer" >Index</a> </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Region</th>
+            <th>PostalCode</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Title</td>
+            <td>@Model.Address</td>
+            <td>@Model.City</td>
+            <td>@ViewData["MyRegion"]</td>
+            <td>@Model.PostalCode</td>
+            <td>@Model.Country</td>
+            <td>@Model.Phone</td>
+            <td><a asp-action="Index" asp-controller="Customer"  class="btn btn-primary">Back</a></td>
+        </tr>
+    </tbody>
+</table>
+

@@ -78,6 +78,14 @@ namespace Antra.CRMApp.WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Info(int id)
+        {
+            var supModel = await supplierServiceAsync.GetByIdAsync(id);
+            var region = await regionServiceAsync.GetByIdAsync(supModel.RegionId);
+            ViewData["MyRegion"] = region.Name;
+            return View(supModel);
+        }
+
         [NonAction]
         public void Demo()
         {

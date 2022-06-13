@@ -1,0 +1,44 @@
+﻿@model EmployeeRequestModel
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Title</th>
+            <th>TitleOfCourtesy</th>
+            <th>BirthDate</th>
+            <th>HireDate</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Region</th>
+            <th>PostalCode</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>ReportsTo</th>
+            <th>PhotoPath</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.FirstName</td>
+            <td>@Model.LastName</td>
+            <td>@Model.Title</td>
+            <td>@Model.TitleOfCourtesy</td>
+            <td>@Model.BirthDate</td>
+            <td>@Model.HireDate</td>
+            <td>@Model.Address</td>
+            <td>@Model.City</td>
+            <td>@ViewData["MyRegion"]</td>
+            <td>@Model.PostalCode</td>
+            <td>@Model.Country</td>
+            <td>@Model.Phone</td>
+            <td>@ViewData["MyReportsTo"]</td>
+            <td>@Model.PhotoPath</td>
+            <td><a asp-action="Index" asp-controller="Employee"  class="btn btn-primary">Back</a></td>
+        </tr>
+    </tbody>
+</table>

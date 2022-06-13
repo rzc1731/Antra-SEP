@@ -79,15 +79,12 @@ namespace Antra.CRMApp.WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Info()
+        public async Task<IActionResult> Info(int id)
         {
-            var Collection = await customerServiceAsync.GetAllAsync();
-            if (Collection != null)
-            {
-                return View(Collection);
-            }
-            List<CustomerModel> model = new List<CustomerModel>();
-            return View(model);
+            var custModel = await customerServiceAsync.GetByIdAsync(id);
+            var region = await regionServiceAsync.GetByIdAsync(custModel.RegionId);
+            ViewData["MyRegion"] = region.Name;
+            return View(custModel);
         }
 
         [NonAction]

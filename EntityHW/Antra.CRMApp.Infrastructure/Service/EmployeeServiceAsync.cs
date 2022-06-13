@@ -88,6 +88,31 @@ namespace Antra.CRMApp.Infrastructure.Service
             return null;
         }
 
+        public async Task<EmployeeRequestModel> GetByIdFullAsync(int id)
+        {
+            var item = await employeeRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                EmployeeRequestModel model = new EmployeeRequestModel();
+                model.Address = item.Address;
+                model.RegionId = item.RegionId;
+                model.BirthDate = item.BirthDate;
+                model.ReportsTo = item.ReportsTo;
+                model.PhotoPath = item.PhotoPath;
+                model.City = item.City;
+                model.Country = item.Country;
+                model.FirstName = item.FirstName;
+                model.LastName = item.LastName;
+                model.Phone = item.Phone;
+                model.HireDate = item.HireDate;
+                model.PostalCode = item.PostalCode;
+                model.Title = item.Title;
+                model.TitleOfCourtesy = item.TitleOfCourtesy;
+                return model;
+            }
+            return null;
+        }
+
         public async Task<EmployeeRequestModel> GetEmployeeForEditAsync(int id)
         {
             var item = await employeeRepositoryAsync.GetByIdAsync(id);
