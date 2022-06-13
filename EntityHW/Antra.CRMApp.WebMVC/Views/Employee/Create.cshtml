@@ -65,7 +65,9 @@
             <div class="col">
                 <div class="mb-4">
                     <label asp-for="RegionId"></label>
-                    <input asp-for="RegionId" class="form-control"/>
+                    <select asp-for="RegionId" class="form-control" asp-items="ViewBag.Regions" >
+                    <option value="">Select a region</option>   
+                    </select>
                     <span asp-validation-for="RegionId"></span>
                 </div>
             </div>

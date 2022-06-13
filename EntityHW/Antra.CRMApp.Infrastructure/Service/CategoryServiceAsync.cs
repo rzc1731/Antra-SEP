@@ -25,6 +25,11 @@ namespace Antra.CRMApp.Infrastructure.Service
             return await categoryRepositoryAsync.InsertAsync(cate);
         }
 
+        public async Task<int> DeleteCategoryAsync(int Id)
+        {
+            return await categoryRepositoryAsync.DeleteAsync(Id);
+        }
+
         public async Task<IEnumerable<CategoryModel>> GetAllAsync()
         {
             var collection = await categoryRepositoryAsync.GetAllAsync();
@@ -42,6 +47,43 @@ namespace Antra.CRMApp.Infrastructure.Service
                 return result;
             }
             return null;
+        }
+
+        public async Task<CategoryModel> GetByIdAsync(int id)
+        {
+            var item = await categoryRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                CategoryModel model = new CategoryModel();
+                model.Name = item.Name;
+                model.Id = item.Id;
+                model.Description = item.Description;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<CategoryModel> GetCategoryForEditAsync(int id)
+        {
+            var item = await categoryRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                CategoryModel model = new CategoryModel();
+                model.Name = item.Name;
+                model.Id = item.Id;
+                model.Description = item.Description;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<int> UpdateCategoryAsync(CategoryModel category)
+        {
+            Category r = new Category();
+            r.Name = category.Name;
+            r.Id = category.Id;
+            r.Description = category.Description;
+            return await categoryRepositoryAsync.UpdateAsync(r);
         }
     }
 }

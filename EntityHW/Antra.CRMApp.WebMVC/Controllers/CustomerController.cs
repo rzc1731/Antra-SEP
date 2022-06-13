@@ -2,15 +2,18 @@
 using Antra.CRMApp.Core.Model;
 using Antra.CRMApp.Infrastructure.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Antra.CRMApp.WebMVC.Controllers
 {
     public class CustomerController : Controller
     {
         private readonly ICustomerServiceAsync customerServiceAsync;
-        public CustomerController(ICustomerServiceAsync supservice)
+        private readonly IRegionServiceAsync regionServiceAsync;
+        public CustomerController(ICustomerServiceAsync supservice, IRegionServiceAsync reg)
         {
             customerServiceAsync = supservice;
+            regionServiceAsync = reg;
         }
         public async Task<IActionResult> Index()
         {
@@ -26,6 +29,8 @@ namespace Antra.CRMApp.WebMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View();
         }
 
@@ -37,7 +42,57 @@ namespace Antra.CRMApp.WebMVC.Controllers
                 await customerServiceAsync.AddCustomerAsync(model);
                 return RedirectToAction("Index");
             }
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.IsEdit = false;
+            var custModel = await customerServiceAsync.GetCustomerForEditAsync(id);
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
+            return View(custModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(CustomerModel model)
+        {
+            ViewBag.IsEdit = false;
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
+            if (ModelState.IsValid)
+            {
+                await customerServiceAsync.UpdateCustomerAsync(model);
+                ViewBag.IsEdit = true;
+
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await customerServiceAsync.DeleteCustomerAsync(id);
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Info()
+        {
+            var Collection = await customerServiceAsync.GetAllAsync();
+            if (Collection != null)
+            {
+                return View(Collection);
+            }
+            List<CustomerModel> model = new List<CustomerModel>();
+            return View(model);
+        }
+
+        [NonAction]
+        public void Demo()
+        {
         }
     }
 }

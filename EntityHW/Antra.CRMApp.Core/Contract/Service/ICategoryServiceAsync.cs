@@ -11,5 +11,9 @@ namespace Antra.CRMApp.Core.Contract.Service
     {
         Task<IEnumerable<CategoryModel>> GetAllAsync();
         Task<int> AddCategoryAsync(CategoryModel model);
+        Task<int> DeleteCategoryAsync(int Id);
+        Task<CategoryModel> GetByIdAsync(int id);
+        Task<CategoryModel> GetCategoryForEditAsync(int id);
+        Task<int> UpdateCategoryAsync(CategoryModel category);
     }
 }

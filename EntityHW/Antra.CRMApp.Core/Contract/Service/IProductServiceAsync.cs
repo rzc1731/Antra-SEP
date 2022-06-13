@@ -11,5 +11,9 @@ namespace Antra.CRMApp.Core.Contract.Service
     {
         Task<IEnumerable<ProductModel>> GetAllAsync();
         Task<int> AddProductAsync(ProductModel product);
+        Task<ProductModel> GetByIdAsync(int id);
+        Task<ProductModel> GetProductForEditAsync(int id);
+        Task<int> UpdateProductAsync(ProductModel employee);
+        Task<int> DeleteProductAsync(int id);
     }
 }

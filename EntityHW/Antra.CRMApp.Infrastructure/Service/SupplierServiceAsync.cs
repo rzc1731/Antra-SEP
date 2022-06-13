@@ -33,6 +33,11 @@ namespace Antra.CRMApp.Infrastructure.Service
             return await repo.InsertAsync(sup);
         }
 
+        public async Task<int> DeleteSupplierAsync(int id)
+        {
+            return await repo.DeleteAsync(id);
+        }
+
         public async Task<IEnumerable<SupplierModel>> GetAllAsync()
         {
             var collection = await repo.GetAllAsync();
@@ -57,6 +62,64 @@ namespace Antra.CRMApp.Infrastructure.Service
                 return result;
             }
             return null;
+        }
+
+        public async Task<SupplierModel> GetByIdAsync(int id)
+        {
+            var item = await repo.GetByIdAsync(id);
+            if (item != null)
+            {
+                SupplierModel model = new SupplierModel();
+                model.Id = item.Id;
+                model.CompanyName = item.CompanyName;
+                model.ContactName = item.ContactName;
+                model.ContactTitle = item.ContactTitle;
+                model.Address = item.Address;
+                model.City = item.City;
+                model.RegionId = item.RegionId;
+                model.PostalCode = item.PostalCode;
+                model.Country = item.Country;
+                model.Phone = item.Phone;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<SupplierModel> GetSupplierForEditAsync(int id)
+        {
+            var item = await repo.GetByIdAsync(id);
+            if (item != null)
+            {
+                SupplierModel model = new SupplierModel();
+                model.Id = item.Id;
+                model.CompanyName = item.CompanyName;
+                model.ContactName = item.ContactName;
+                model.ContactTitle = item.ContactTitle;
+                model.Address = item.Address;
+                model.City = item.City;
+                model.RegionId = item.RegionId;
+                model.PostalCode = item.PostalCode;
+                model.Country = item.Country;
+                model.Phone = item.Phone;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<int> UpdateSupplierAsync(SupplierModel supplier)
+        {
+            Supplier s = new Supplier();
+            s.Id = supplier.Id;
+            s.CompanyName = supplier.CompanyName;
+            s.ContactName = supplier.ContactName;
+            s.ContactTitle = supplier.ContactTitle;
+            s.Address = supplier.Address;
+            s.City = supplier.City;
+            s.RegionId = supplier.RegionId;
+            s.PostalCode = supplier.PostalCode;
+            s.Country = supplier.Country;
+            s.Phone = supplier.Phone;
+            return await repo.UpdateAsync(s);
         }
     }
 }

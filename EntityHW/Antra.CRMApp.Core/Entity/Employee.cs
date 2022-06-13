@@ -38,8 +38,8 @@ namespace Antra.CRMApp.Core.Entity
         [Column(TypeName = "varchar(15)")]
         public string City { get; set; }
 
-        [Column(TypeName = "varchar(15)")]
-        public string RegionId { get; set; }
+        [Column(TypeName = "int")]
+        public int RegionId { get; set; }
 
         [Column(TypeName = "varchar(10)")]
         public string PostalCode { get; set; }
@@ -55,5 +55,7 @@ namespace Antra.CRMApp.Core.Entity
 
         [Column(TypeName = "varchar(MAX)")]
         public string PhotoPath { get; set; }
+
+        public Region Region { get; set; }
     }
 }

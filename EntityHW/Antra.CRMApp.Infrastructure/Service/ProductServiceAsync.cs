@@ -33,6 +33,11 @@ namespace Antra.CRMApp.Infrastructure.Service
             return await repo.InsertAsync(p);
         }
 
+        public async Task<int> DeleteProductAsync(int id)
+        {
+            return await repo.DeleteAsync(id);
+        }
+
         public async Task<IEnumerable<ProductModel>> GetAllAsync()
         {
             var collection = await repo.GetAllAsync();
@@ -57,6 +62,64 @@ namespace Antra.CRMApp.Infrastructure.Service
                 return result;
             }
             return null;
+        }
+
+        public async Task<ProductModel> GetByIdAsync(int id)
+        {
+            var item = await repo.GetByIdAsync(id);
+            if (item != null)
+            {
+                ProductModel model = new ProductModel();
+                model.Id = item.Id;
+                model.Name = item.Name;
+                model.SupplierId= item.SupplierId;
+                model.CategoryId= item.CategoryId;
+                model.QuantityPerUnit= item.QuantityPerUnit;
+                model.UnitPrice= item.UnitPrice;
+                model.UnitsInStock= item.UnitsInStock;
+                model.UnitsOnOrder= item.UnitsOnOrder;
+                model.ReorderLevel= item.ReorderLevel;
+                model.Discontinued= item.Discontinued;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<ProductModel> GetProductForEditAsync(int id)
+        {
+            var item = await repo.GetByIdAsync(id);
+            if (item != null)
+            {
+                ProductModel model = new ProductModel();
+                model.Id = item.Id;
+                model.Name = item.Name;
+                model.SupplierId = item.SupplierId;
+                model.CategoryId = item.CategoryId;
+                model.QuantityPerUnit = item.QuantityPerUnit;
+                model.UnitPrice = item.UnitPrice;
+                model.UnitsInStock = item.UnitsInStock;
+                model.UnitsOnOrder = item.UnitsOnOrder;
+                model.ReorderLevel = item.ReorderLevel;
+                model.Discontinued = item.Discontinued;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<int> UpdateProductAsync(ProductModel product)
+        {
+            Product p = new Product();
+            p.Id = product.Id;
+            p.Name = product.Name;
+            p.SupplierId = product.SupplierId;
+            p.CategoryId = product.CategoryId;
+            p.QuantityPerUnit = product.QuantityPerUnit;
+            p.UnitPrice = product.UnitPrice;
+            p.UnitsInStock = product.UnitsInStock;
+            p.UnitsOnOrder = product.UnitsOnOrder;
+            p.ReorderLevel = product.ReorderLevel;
+            p.Discontinued = product.Discontinued;
+            return await repo.UpdateAsync(p);
         }
     }
 }

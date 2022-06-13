@@ -6,6 +6,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Phone</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
                 <td>@m.Id</td>
                 <td>@m.Name</td>
                 <td>@m.Phone</td>
+                <td><a asp-action="Edit" asp-controller="Shipper" asp-route-id="@m.Id"  class="btn btn-primary">Edit</a> &nbsp <a class="btn bg-danger" asp-action="Delete" asp-controller="Shipper" asp-route-id="@m.Id">Delete</a></td>
             </tr>
         }
     </tbody>

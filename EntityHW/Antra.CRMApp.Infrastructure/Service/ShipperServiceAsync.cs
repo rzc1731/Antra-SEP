@@ -26,6 +26,11 @@ namespace Antra.CRMApp.Infrastructure.Service
             return await shipperRepositoryAsync.InsertAsync(ship);
         }
 
+        public async Task<int> DeleteShipperAsync(int Id)
+        {
+            return await shipperRepositoryAsync.DeleteAsync(Id);
+        }
+
         public async Task<IEnumerable<ShipperModel>> GetAllAsync()
         {
             var collection = await shipperRepositoryAsync.GetAllAsync();
@@ -43,6 +48,42 @@ namespace Antra.CRMApp.Infrastructure.Service
                 return result;
             }
             return null;
+        }
+
+        public async Task<ShipperModel> GetByIdAsync(int id)
+        {
+            var item = await shipperRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                ShipperModel model = new ShipperModel();
+                model.Name = item.Name;
+                model.Id = item.Id;
+                model.Phone = item.Phone;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<ShipperModel> GetShipperForEditAsync(int id)
+        {
+            var item = await shipperRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                ShipperModel model = new ShipperModel();
+                model.Name = item.Name;
+                model.Id = item.Id;
+                model.Phone = item.Phone;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<int> UpdateShipperAsync(ShipperModel shipper)
+        {
+            Shipper r = new Shipper();
+            r.Name = shipper.Name;
+            r.Id = shipper.Id;
+            return await shipperRepositoryAsync.UpdateAsync(r);
         }
     }
 }

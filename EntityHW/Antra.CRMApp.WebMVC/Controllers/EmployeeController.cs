@@ -1,15 +1,18 @@
 ﻿using Antra.CRMApp.Core.Contract.Service;
 using Antra.CRMApp.Core.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Antra.CRMApp.WebMVC.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly IEmployeeServiceAsync employeeServiceAsync;
-        public EmployeeController(IEmployeeServiceAsync empservice)
+        private readonly IRegionServiceAsync regionServiceAsync;
+        public EmployeeController(IEmployeeServiceAsync empservice, IRegionServiceAsync reg)
         {
             employeeServiceAsync = empservice;
+            regionServiceAsync = reg;
         }
         public async Task<IActionResult> Index()
         {
@@ -25,6 +28,8 @@ namespace Antra.CRMApp.WebMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View();
         }
 
@@ -36,6 +41,8 @@ namespace Antra.CRMApp.WebMVC.Controllers
                 await employeeServiceAsync.AddEmployeeAsync(model);
                 return RedirectToAction("Index");
             }
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View(model);
         }
 
@@ -44,12 +51,16 @@ namespace Antra.CRMApp.WebMVC.Controllers
         {
             ViewBag.IsEdit = false;
             var empModel = await employeeServiceAsync.GetEmployeeForEditAsync(id);
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View(empModel);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(EmployeeRequestModel model)
         {
             ViewBag.IsEdit = false;
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             if (ModelState.IsValid)
             {
                 await employeeServiceAsync.UpdateEmployeeAsync(model);

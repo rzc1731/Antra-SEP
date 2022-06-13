@@ -17,14 +17,18 @@
             <div class="col">
                 <div class="mb-4">
                     <label asp-for="SupplierId"></label>
-                    <input asp-for="SupplierId" class="form-control"/>
+                    <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Suppliers" >
+                    <option value="">Select a supplier</option>   
+                    </select>
                     <span asp-validation-for="SupplierId"></span>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-4">
                     <label asp-for="CategoryId"></label>
-                    <input asp-for="CategoryId" class="form-control"/>
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categoriers" >
+                    <option value="">Select a category</option>   
+                    </select>
                     <span asp-validation-for="CategoryId"></span>
                 </div>
             </div>

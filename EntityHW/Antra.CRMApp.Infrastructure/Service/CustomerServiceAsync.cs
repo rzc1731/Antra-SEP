@@ -32,6 +32,11 @@ namespace Antra.CRMApp.Infrastructure.Service
             return await repo.InsertAsync(cust);
         }
 
+        public async Task<int> DeleteCustomerAsync(int id)
+        {
+            return await repo.DeleteAsync(id);
+        }
+
         public async Task<IEnumerable<CustomerModel>> GetAllAsync()
         {
             var collection = await repo.GetAllAsync();
@@ -55,6 +60,61 @@ namespace Antra.CRMApp.Infrastructure.Service
                 return result;
             }
             return null;
+        }
+
+        public async Task<CustomerModel> GetByIdAsync(int id)
+        {
+            var item = await repo.GetByIdAsync(id);
+            if (item != null)
+            {
+                CustomerModel model = new CustomerModel();
+                model.Id = item.Id;
+                model.Name = item.Name;
+                model.Title = item.Title;
+                model.Address =  item.Address;
+                model.City = item.City;
+                model.RegionId = item.RegionId;
+                model.PostalCode = item.PostalCode;
+                model.Country = item.Country;
+                model.Phone = item.Phone;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<CustomerModel> GetCustomerForEditAsync(int id)
+        {
+            var item = await repo.GetByIdAsync(id);
+            if (item != null)
+            {
+                CustomerModel model = new CustomerModel();
+                model.Id = item.Id;
+                model.Name = item.Name;
+                model.Title = item.Title;
+                model.Address = item.Address;
+                model.City = item.City;
+                model.RegionId = item.RegionId;
+                model.PostalCode = item.PostalCode;
+                model.Country = item.Country;
+                model.Phone = item.Phone;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<int> UpdateCustomerAsync(CustomerModel customer)
+        {
+            Customer c = new Customer();
+            c.Id = customer.Id;
+            c.Name = customer.Name;
+            c.Title = customer.Title;
+            c.Address = customer.Address;
+            c.City = customer.City;
+            c.RegionId = customer.RegionId;
+            c.PostalCode = customer.PostalCode;
+            c.Country = customer.Country;
+            c.Phone = customer.Phone;
+            return await repo.UpdateAsync(c);
         }
     }
 }

@@ -4,6 +4,7 @@ using Antra.CRMApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Antra.CRMApp.Infrastructure.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    partial class CrmDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220611220441_UpdatEmployeeRegionFK")]
+    partial class UpdatEmployeeRegionFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,16 +77,15 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(10)");
 
-                    b.Property<int>("RegionId")
-                        .HasColumnType("int");
+                    b.Property<string>("RegionId")
+                        .IsRequired()
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("varchar(30)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RegionId");
 
                     b.ToTable("Customer");
                 });
@@ -195,10 +196,6 @@ namespace Antra.CRMApp.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("SupplierId");
-
                     b.ToTable("Product");
                 });
 
@@ -280,12 +277,11 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(10)");
 
-                    b.Property<int>("RegionId")
-                        .HasColumnType("int");
+                    b.Property<string>("RegionId")
+                        .IsRequired()
+                        .HasColumnType("varchar(15)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RegionId");
 
                     b.ToTable("Supplier");
                 });
@@ -326,48 +322,7 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                     b.ToTable("Vendor");
                 });
 
-            modelBuilder.Entity("Antra.CRMApp.Core.Entity.Customer", b =>
-                {
-                    b.HasOne("Antra.CRMApp.Core.Entity.Region", "Region")
-                        .WithMany()
-                        .HasForeignKey("RegionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Region");
-                });
-
             modelBuilder.Entity("Antra.CRMApp.Core.Entity.Employee", b =>
-                {
-                    b.HasOne("Antra.CRMApp.Core.Entity.Region", "Region")
-                        .WithMany()
-                        .HasForeignKey("RegionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Region");
-                });
-
-            modelBuilder.Entity("Antra.CRMApp.Core.Entity.Product", b =>
-                {
-                    b.HasOne("Antra.CRMApp.Core.Entity.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Antra.CRMApp.Core.Entity.Supplier", "Supplier")
-                        .WithMany()
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Supplier");
-                });
-
-            modelBuilder.Entity("Antra.CRMApp.Core.Entity.Supplier", b =>
                 {
                     b.HasOne("Antra.CRMApp.Core.Entity.Region", "Region")
                         .WithMany()

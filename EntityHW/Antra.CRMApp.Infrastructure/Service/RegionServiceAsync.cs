@@ -25,9 +25,9 @@ namespace Antra.CRMApp.Infrastructure.Service
             return await regionRepositoryAsync.InsertAsync(region);
         }
 
-        public Task<int> DeleteRegionAsync(int regionId)
+        public async Task<int> DeleteRegionAsync(int regionId)
         {
-            return regionRepositoryAsync.DeleteAsync(regionId);
+            return await regionRepositoryAsync.DeleteAsync(regionId);
         }
 
         public async Task<IEnumerable<RegionModel>> GetAllAsync()
@@ -46,6 +46,40 @@ namespace Antra.CRMApp.Infrastructure.Service
                 return regionModels;
             }
             return null;
+        }
+
+        public async Task<RegionModel> GetByIdAsync(int id)
+        {
+            var item = await regionRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                RegionModel model = new RegionModel();
+                model.Name = item.Name;
+                model.Id = item.Id;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<RegionModel> GetRegionForEditAsync(int id)
+        {
+            var item = await regionRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                RegionModel model = new RegionModel();
+                model.Name = item.Name;
+                model.Id = item.Id;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<int> UpdateRegionAsync(RegionModel region)
+        {
+            Region r = new Region();
+            r.Name = region.Name;
+            r.Id = region.Id;
+            return await regionRepositoryAsync.UpdateAsync(r);
         }
     }
 }

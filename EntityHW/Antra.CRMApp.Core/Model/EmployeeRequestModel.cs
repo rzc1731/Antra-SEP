@@ -38,8 +38,9 @@ namespace Antra.CRMApp.Core.Model
         [Column(TypeName = "varchar(15)")]
         public string City { get; set; }
 
-        [Column(TypeName = "varchar(15)")]
-        public string RegionId { get; set; }
+        [Column(TypeName = "int")]
+        [Display(Name = "Region")]
+        public int RegionId { get; set; }
 
         [Column(TypeName = "varchar(10)")]
         public string PostalCode { get; set; }
