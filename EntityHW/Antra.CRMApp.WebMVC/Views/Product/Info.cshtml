@@ -20,8 +20,8 @@
         <tr>
             <td>@Model.Id</td>
             <td>@Model.Name</td>
-            <td>@ViewData["MySupplier"]</td>
-            <td>@ViewData["MyCategory"]</td>
+            <td>@Model.Supplier.CompanyName</td>
+            <td>@Model.Category.Name</td>
             <td>@Model.QuantityPerUnit</td>
             <td>@Model.UnitPrice</td>
             <td>@Model.UnitsInStock</td>

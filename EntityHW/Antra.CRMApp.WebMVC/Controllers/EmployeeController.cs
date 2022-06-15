@@ -82,7 +82,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
         {
             var empModel = await employeeServiceAsync.GetByIdFullAsync(id);
             var region = await regionServiceAsync.GetByIdAsync(empModel.RegionId);
-            ViewData["MyRegion"] = region.Name;
+            empModel.Region = region;
             if (empModel.ReportsTo != null)
             {
                 var empReportsTo = await employeeServiceAsync.GetByIdAsync((int)empModel.ReportsTo);

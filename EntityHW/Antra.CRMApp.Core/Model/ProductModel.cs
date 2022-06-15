@@ -20,9 +20,13 @@ namespace Antra.CRMApp.Core.Model
         [Display(Name = "Supplier")]
         public int SupplierId { get; set; }
 
+        public SupplierModel Supplier { get; set; }
+
         [Column(TypeName = "int")]
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
+
+        public CategoryModel Category { get; set; }
 
         [Column(TypeName = "varchar(20)")]
         public string QuantityPerUnit { get; set; }

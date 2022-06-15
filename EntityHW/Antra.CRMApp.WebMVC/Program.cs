@@ -3,8 +3,12 @@ using Antra.CRMApp.Core.Contract.Service;
 using Antra.CRMApp.Infrastructure.Service;
 using Antra.CRMApp.Infrastructure.Data;
 using Antra.CRMApp.Infrastructure.Repository;
+using Serilog;
+using Serilog.AspNetCore;
+using Antra.CRMApp.WebMVC.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog();
 
 // Add services to the container.
 //dependency injection for repository
@@ -37,6 +41,9 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseSerilogRequestLogging();
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

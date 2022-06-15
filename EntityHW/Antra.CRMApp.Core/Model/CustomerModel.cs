@@ -37,5 +37,7 @@ namespace Antra.CRMApp.Core.Model
 
         [Column(TypeName = "varchar(24)")]
         public string Phone { get; set; }
+
+        public RegionModel Region { get; set; }
     }
 }

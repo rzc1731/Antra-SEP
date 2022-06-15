@@ -33,6 +33,8 @@ namespace Antra.CRMApp.Core.Model
         [Display(Name = "Region")]
         public int RegionId { get; set; }
 
+        public RegionModel Region { get; set; }
+
         [Column(TypeName = "varchar(10)")]
         public string PostalCode { get; set; }
 
@@ -41,7 +43,5 @@ namespace Antra.CRMApp.Core.Model
 
         [Column(TypeName = "varchar(24)")]
         public string Phone { get; set; }
-
-        public Region Region { get; set; }
     }
 }

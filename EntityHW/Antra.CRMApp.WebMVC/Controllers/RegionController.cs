@@ -20,6 +20,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            // throw new Exception("Region exception");
             return View();
         }
 

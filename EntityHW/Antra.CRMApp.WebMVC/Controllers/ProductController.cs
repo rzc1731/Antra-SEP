@@ -93,9 +93,9 @@ namespace Antra.CRMApp.WebMVC.Controllers
         {
             var prodModel = await productServiceAsync.GetByIdAsync(id);
             var sup = await supplierServiceAsync.GetByIdAsync(prodModel.SupplierId);
-            ViewData["MySupplier"] = sup.CompanyName;
+            prodModel.Supplier = sup;
             var cate = await categoryServiceAsync.GetByIdAsync(prodModel.CategoryId);
-            ViewData["MyCategory"] = cate.Name;
+            prodModel.Category = cate;
             return View(prodModel);
         }
 

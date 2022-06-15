@@ -82,7 +82,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
         {
             var supModel = await supplierServiceAsync.GetByIdAsync(id);
             var region = await regionServiceAsync.GetByIdAsync(supModel.RegionId);
-            ViewData["MyRegion"] = region.Name;
+            supModel.Region = region;
             return View(supModel);
         }
 

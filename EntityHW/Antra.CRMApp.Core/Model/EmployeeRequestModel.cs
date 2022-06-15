@@ -42,6 +42,8 @@ namespace Antra.CRMApp.Core.Model
         [Display(Name = "Region")]
         public int RegionId { get; set; }
 
+        public RegionModel Region { get; set; }
+
         [Column(TypeName = "varchar(10)")]
         public string PostalCode { get; set; }
 
@@ -53,6 +55,8 @@ namespace Antra.CRMApp.Core.Model
 
         [Column(TypeName = "int")]
         public int? ReportsTo { get; set; }
+
+        public EmployeeRequestModel Employee { get; set; }
 
         [Column(TypeName = "varchar(MAX)")]
         public string PhotoPath { get; set; }
