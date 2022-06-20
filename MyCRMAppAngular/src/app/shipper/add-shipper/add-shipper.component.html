@@ -1,0 +1,19 @@
+<form #addShipper="ngForm" (submit) ="insertShipper(addShipper)" >
+    <div class="row">
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtFName">Name</label>
+            <input id="txtFName" [(ngModel)]="shipper.name" name="name" class="form-control"/>
+        </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtPhone">Phone</label>
+            <input id="txtPhone" [(ngModel)]="shipper.phone" name="phone" class="form-control"/>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Add shipper" class="btn btn-primary"/>
+    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addShipper)"/>
+</form>

@@ -1,0 +1,69 @@
+<form #addSupplier="ngForm" (submit) ="insertSupplier(addSupplier)" >
+    <div class="row">
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtCName">Company Name</label>
+            <input id="txtCName" [(ngModel)]="supplier.companyName" name="companyName" class="form-control"/>
+        </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtContactName">Contact Name</label>
+            <input id="txtContactName" [(ngModel)]="supplier.contactName" name="contactName" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtContactTitle">Contact Title</label>
+            <input id="txtContactTitle" [(ngModel)]="supplier.contactTitle" name="contactTitle" class="form-control"/>
+            </div>
+        </div>
+    </div>
+   <div class="row">
+    <div class="col-4">
+        
+<div class="mb-3">
+    <label for="txtAddress">Address</label>
+<input id="txtAddress" [(ngModel)]="supplier.address" name="address" class="form-control"/>
+</div>
+    </div>
+    
+    <div class="col-4">
+        <div class="mb-3">
+            <label for="txtCity">City</label>
+        <input id="txtCity" [(ngModel)]="supplier.city" name="city" class="form-control"/>
+        </div>
+        
+    </div>
+    
+    <div class="col-4"><div class="mb-3">
+        <label for="txtRegion">Region</label>
+    <input id="txtRegion" [(ngModel)]="supplier.region" name="region" class="form-control"/>
+    </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-4">
+        <div class="mb-3">
+            <label for="txtPostalCode">PostalCode</label>
+        <input id="txtPostalCode" [(ngModel)]="supplier.postalCode" name="postalCode" class="form-control"/>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="mb-3">
+            <label for="txtCountry">Country</label>
+        <input id="txtCountry" [(ngModel)]="supplier.country" name="country" class="form-control"/>
+        </div>
+        
+    </div>
+    <div class="col-4">
+        <div class="mb-3">
+            <label for="txtPhone">Phone</label>
+        <input id="txtPhone" [(ngModel)]="supplier.phone" name="phone" class="form-control"/>
+        </div>
+    </div>
+   </div>
+
+    <input type="submit" value="Add supplier" class="btn btn-primary"/>
+    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addSupplier)"/>
+</form>

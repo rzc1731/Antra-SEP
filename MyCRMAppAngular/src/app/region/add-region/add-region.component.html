@@ -1,0 +1,13 @@
+<form #addRegion="ngForm" (submit) ="insertRegion(addRegion)" >
+    <div class="row">
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtFName">Name</label>
+            <input id="txtFName" [(ngModel)]="region.name" name="name" class="form-control"/>
+        </div>
+    </div>
+</div>
+
+    <input type="submit" value="Add region" class="btn btn-primary"/>
+    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addRegion)"/>
+</form>
